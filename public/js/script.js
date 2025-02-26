@@ -1,6 +1,4 @@
-const socket = io("https://location-tracker-sqhw.onrender.com", {
-  transports: ["websocket", "polling"], // Allow both WebSocket and HTTP polling
-}); // Connect to server
+const socket = io(); // Connect to server
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize map with default view

@@ -1,4 +1,4 @@
-const socket = io(); // Connect to server
+const socket = io("https://location-tracker-sand.vercel.app"); // Connect to server
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize map with default view

@@ -2,11 +2,11 @@ const socket = io(); // Connect to server
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize map with default view
-  const map = L.map("map").setView([0, 0], 15); // Centered at India
+  const map = L.map("map").setView([20.5937, 78.9629], 15); // Centered at India
 
   // Add OpenStreetMap tiles
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap contributors",
+    attribution: "© Team ByteBuilders",
   }).addTo(map);
 
   // Get User Location

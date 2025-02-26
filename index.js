@@ -1,20 +1,30 @@
-const express = require('express');
+const express = require("express");
+const http = require("http");
+const path = require("path");
+const socketio = require("socket.io");
+
 const app = express();
-const http = require('http');
-const path = require('path');
 const server = http.createServer(app);
-const soketio = require("socket.io");
+const io = socketio(server);
 
-const io = soketio(server);
+// Serve static files from the "public" folder
+app.use(express.static(path.join(__dirname, "public")));
 
-app.set('view engine', 'ejs');
-app.set(express.static(path.join(__dirname, 'public',)));
+io.on("connection", (socket) => {
+  console.log("User connected");
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+  socket.on("send-location", (location) => {
+    console.log("Received location:", location);
+    socket.broadcast.emit("update-location", location); // Send to all other users
+  });
 });
 
-const port = process.env.PORT || 3000;
+// Serve the HTML file
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+const port = 3000;
 server.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });

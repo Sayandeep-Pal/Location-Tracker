@@ -2,7 +2,7 @@ const socket = io(); // Connect to server
 
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize map with default view
-  const map = L.map("map").setView([20.5937, 78.9629], 15); // Centered at India
+  const map = L.map("map").setView([20.5937, 78.9629], 20); // Centered at India
 
   // Add OpenStreetMap tiles
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
